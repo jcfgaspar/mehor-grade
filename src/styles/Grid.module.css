@@ -1,0 +1,17 @@
+
+.container_login {
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form_login {
+    border-radius: 10px;
+    background-color: rgb(235, 235, 235);
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow:  0 0.5em 1.5em rgb(0 0 0 / 10%), 0 0.125em 0.5em rgb(0 0 0 / 15%);
+    border: 1px solid #ced4da;
+}

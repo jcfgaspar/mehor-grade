@@ -1,0 +1,9 @@
+.dropdown-list{
+    position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -34px);
+}
+
+.pos-bottom{
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}

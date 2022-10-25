@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+            "@forms-admin/*": ["src/components/forms/admin/*"],
+            "@forms-visitante/*": ["src/components/forms/visitante/*"],
+            "@forms-discente/*": ["src/components/forms/discente/*"],
+            "@grids/*": ["src/components/grids/*"],
+            "@admin/*": ["src/pages/admin/*"],
+            "@pages/*": ["src/pages/*"],
+            "@list/*": ["src/components/list/*"]
+        }
+    }
+}
