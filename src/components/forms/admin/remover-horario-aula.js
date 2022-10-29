@@ -31,7 +31,7 @@ const Alert = props => {
 }
 
 
-export default function loginForm(){
+export default function LoginForm(){
     const [flag, setFlag] = useState()
     const { register, handleSubmit } = useForm()
 

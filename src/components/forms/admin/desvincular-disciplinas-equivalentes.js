@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-export default function loginForm(){
+export default function LoginForm(){
     const { register, handleSubmit } = useForm()
     const [flag,setFlag] = useState(false)
 

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-export default function loginForm(){
+export default function LoginForm(){
     const { register, handleSubmit } = useForm()
 
     const onSubmit = data => {

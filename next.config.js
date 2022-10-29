@@ -14,6 +14,18 @@ module.exports = {
         permanent: true,
         basePath:false
       },
+      {
+        source: '/admin',
+        destination:'/admin/home',
+        permanent: false,
+        basePath:false
+      },
+      {
+        source: '/discente',
+        destination:'/discente/home',
+        permanent: false,
+        basePath:false
+      },
     ]
   },
   nextConfig

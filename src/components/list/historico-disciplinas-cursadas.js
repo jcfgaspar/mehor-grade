@@ -4,13 +4,13 @@ const getGrade = _ => {
 
 const Disciplina = props => {
     return (
-        <li class="list-group-item"> {  props.name + " - Disciplina Cursada " } </li>
+        <li className="list-group-item"> {  props.name + " - Disciplina Cursada " } </li>
     )
 }
 
 const Lista = ({ children }) => {
     return (
-        <ul class="list-group">
+        <ul className="list-group">
             { children }
         </ul>
     )

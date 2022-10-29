@@ -6,13 +6,13 @@ const ListGroupItem = (props) => {
   return (
     <div>
       <hr/>
-      <a class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Matéria opcional</h5>
-          <small class="text-muted">{ getGrade().toFixed(0) } horas</small>
+      <a className="list-group-item list-group-item-action">
+        <div className="d-flex w-100 justify-content-between">
+          <h5 className="mb-1">Matéria opcional</h5>
+          <small className="text-muted">{ getGrade().toFixed(0) } horas</small>
         </div>
-        <p class="mb-1">Descrição da matéria opcional aqui</p>
-        <small class="text-muted">Professor XXXX</small>
+        <p className="mb-1">Descrição da matéria opcional aqui</p>
+        <small className="text-muted">Professor XXXX</small>
       </a>
     </div>
   );

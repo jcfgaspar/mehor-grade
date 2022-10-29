@@ -2,13 +2,13 @@ const getGrade = _ => (Math.random() * 7) + 1
 
 const Disciplina = props => {
     return (
-        <li class="list-group-item"> Disciplinas { props.name } - { getGrade().toFixed(0) }º Semestre</li>
+        <li className="list-group-item"> Disciplinas { props.name } - { getGrade().toFixed(0) }º Semestre</li>
     )
 }
 
 const Lista = ({ children }) => {
     return (
-        <ul class="list-group">
+        <ul className="list-group">
             { children }
         </ul>
     )
