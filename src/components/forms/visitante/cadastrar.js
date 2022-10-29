@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import Link from "next/link"
 
 export default function CadastrarForm(){
     const { register, handleSubmit } = useForm()

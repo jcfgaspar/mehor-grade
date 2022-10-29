@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
+import Link from "next/link"
 
 import Form from '../../components/forms/admin/login-form.js'
 
@@ -21,7 +22,7 @@ export default function Home() {
 
         <p className={styles.description}>
           Comece criando um cadastro{' '}
-          <code className={styles.code}> 👉<a href="/visitante/login"> clicando aqui </a>  👈</code>
+          <code className={styles.code}> <Link href="/visitante/login">👉 clique aqui  👈</Link></code>
         </p>
 
     

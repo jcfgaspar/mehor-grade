@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import Link from "next/link"
 
 export default function LoginForm(){
     const { register, handleSubmit } = useForm()
@@ -19,7 +20,7 @@ export default function LoginForm(){
                 <label className="form-label">Senha</label>
                 <input type="password" className="form-control" {...register('password')}/>
             </div>
-            <div className="form-text">Não possuí cadastro? <a href="/visitante/cadastro"> clique aqui para cadastrar</a></div>
+            <div className="form-text">Não possuí cadastro? <Link href="/visitante/cadastro">clique aqui para cadastrar</Link></div>
             <button type="submit" className="btn btn-primary">Enviar</button>
         </form>
         </>
