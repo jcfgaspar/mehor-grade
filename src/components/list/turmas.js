@@ -45,6 +45,7 @@ export default function ListDisciplinas() {
       current={currentPage}
       callBack={fetchDisciplinas}
       skeleton={skeleton}
+      title="Lista de Turmas"
     >
       {disciplinas}
     </Pagination>

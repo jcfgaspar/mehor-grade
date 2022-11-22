@@ -23,7 +23,13 @@ const Pagination = props => {
     }
      
     return (
-        <div className="list_div d-flex flex-column bd-highlight" style={{"height": "94vh !important;"}}>
+        <div className="d-flex flex-column form-altura">
+            { props?.title 
+                ? <div class="p-2 bd-highlight">
+                    <p className='list-h1'>{ props.title }</p>
+                  </div>
+                : null
+            }
             <div className="p-2 bd-highlight">
                 { props.skeleton ? <Skeleton height={70} count={10} baseColor="#c7c7c7" highlightColor="#dcdcdc" borderRadius="0.5rem"/> : props.children }
             </div>

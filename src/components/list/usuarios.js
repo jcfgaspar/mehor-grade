@@ -52,6 +52,7 @@ export default function ListDisciplinas() {
         current={currentPage}
         callBack={fetchUsuarios}
         skeleton={skeleton}
+        title="Lista de Usuários"
       >
         {disciplinas}
       </Pagination>
