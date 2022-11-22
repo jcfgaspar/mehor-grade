@@ -1,6 +1,6 @@
-import FormRemoverCursosOfertados from '@forms-admin/remover-turma'
+import FormRemoverCursosOfertados from '@forms-admin/curso/remover'
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
 
 export default function Login(){
     return (

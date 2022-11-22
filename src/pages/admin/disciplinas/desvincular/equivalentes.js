@@ -1,6 +1,6 @@
-import FormDesvincularDisciplinas from '@forms-admin/desvincular-disciplinas-equivalentes'
+import FormDesvincularDisciplinas from '@forms-admin/disciplina/desvincular/desvincular-disciplinas-equivalentes'
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
 
 
 export default function PageDesvincularDisciplinas(){

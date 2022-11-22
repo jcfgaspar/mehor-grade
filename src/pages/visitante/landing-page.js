@@ -3,8 +3,6 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Link from "next/link"
 
-import Form from '../../components/forms/admin/login-form.js'
-
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -17,14 +15,18 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-         Bem vindo a <a href="">Melhor Grade!</a>
+         Bem vindo a <p className='gradient'>Melhor Grade!</p>
         </h1>
 
         <p className={styles.description}>
-          Comece criando um cadastro{' '}
-          <code className={styles.code}> <Link href="/visitante/login">👉 clique aqui  👈</Link></code>
+          Comece criando um cadastro:{' '}
+          <code> <Link href="/visitante/cadastro">clique aqui</Link></code>
         </p>
 
+        <p className={styles.descriptions}>
+        Já tem uma conta?{' '}
+          <code> <Link href="/visitante/login">clique aqui</Link></code>
+        </p>
     
       </main>
 

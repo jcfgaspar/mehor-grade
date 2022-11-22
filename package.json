@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
+    "dotenv": "^16.0.3",
+    "framer-motion": "^7.6.7",
     "next": "12.3.1",
     "node-fetch": "^3.2.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.38.0"
+    "react-hook-form": "^7.38.0",
+    "react-loading-skeleton": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "8.25.0",

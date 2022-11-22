@@ -1,6 +1,6 @@
-import FormVincularDisciplinas from '@forms-admin/vincular-disciplinas-matriz-curricular'
+import FormVincularDisciplinas from '@forms-admin/disciplina/vincular/vincular-disciplinas-matriz-curricular'
 import CenterDiv from '@grids/Center.js'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
 
 
 export default function PageVincularDisciplinaMatrizCurricular(){

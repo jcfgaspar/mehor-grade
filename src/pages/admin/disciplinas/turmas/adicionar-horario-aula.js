@@ -1,6 +1,6 @@
 import FormAdicionarCurso from '@forms-admin/adicionar-horario-aula'
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
 
 export default function PageAdicionarTurma(){
     return (

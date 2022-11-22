@@ -1,6 +1,7 @@
-import FormAdicionarCurso from '@forms-admin/adicionar-curso'
+import FormAdicionarCurso from '@forms-admin/curso/adicionar'
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
+import ListaGrid from '@grids/Lista'
 
 export default function PageAdicionarCurso(){
     return (

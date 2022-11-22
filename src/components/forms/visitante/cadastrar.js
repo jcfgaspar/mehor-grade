@@ -1,38 +1,51 @@
-import { useForm } from 'react-hook-form'
 import Link from "next/link"
+import React, { useState } from "react";
+import { routes, headers } from "@helpers/routes"
+import { useForm } from 'react-hook-form'
+import AlertError from '@alerts/error'
+import { useRouter } from "next/router";
+import ButtonDefault from "@buttons/default"
 
-export default function CadastrarForm(){
+export default function LoginForm(){
+    const router = useRouter()
     const { register, handleSubmit } = useForm()
+    const [isError, setIsError] = useState("")
+    const [carregando, setCarregando] = useState(false)
 
-    const onSubmit = data => {
-        console.log(data)
-    }
 
+     const onSubmit = data => {
+        setCarregando(true)
+        setIsError("")
+        fetch(routes.internal.v1.usuarios.add, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers,
+        }).then(response => {
+            if(response.redirected) router.push("/visitante/login")
+            else setIsError("Não foi possível criar usuário")
+        })
+    };
     return (
       <>
         <form onSubmit={handleSubmit(onSubmit)}>
+            <h1>Cadastrar</h1>
             <div className="mb-3">
-                <label className="form-label" >Nome</label>
-                <input className="form-control" type="text" {...register('nomex') }/>
-            </div>
-            <div className="mb-3">
-                <label className="form-label" >Endereço de email</label>
-                <input className="form-control" type="email" {...register('email') }/>
+                <label className="form-label" >Usuário</label>
+                <input className="form-control" type="text" {...register('usuario') }/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Senha</label>
-                <input type="password" className="form-control" {...register('password')}/>
+                <input type="password" className="form-control" {...register('senha')}/>
             </div>
-            <div className="mb-3">
-                <label className="form-label">Confirme a Senha</label>
-                <input type="password" className="form-control" {...register('password-check')}/>
-            </div>
-            <div className="mb-3 form-check">
-                <input type="checkbox" className="form-check-input" {...register('checkbox')}/>
-                <label className="form-check-label">Aceito os termos de política e privacidade</label>
-            </div>
-            <button type="submit" className="btn btn-primary">Enviar</button>
+            <br/>
+            <ButtonDefault 
+                acao={"Cadastrando..."}
+                estatico={"Cadastrar"}
+                carregando={carregando}
+            />
         </form>
+        <br/>
+        { isError && <AlertError>{ isError }</AlertError>}
         </>
     );
 }

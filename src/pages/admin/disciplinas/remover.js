@@ -1,6 +1,6 @@
-import FormRemoverDisciplinas from '@forms-admin/remover-disciplinas'
+import FormRemoverDisciplinas from '@forms-admin/disciplina/remover-disciplinas'
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
 
 export default function PageRemoverDisciplinas(){
     return (

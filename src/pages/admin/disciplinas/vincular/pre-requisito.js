@@ -1,7 +1,7 @@
 
-import FormVincularDisciplinas from '@forms-admin/vincular-disciplinas-pre-requisito'
+import FormVincularDisciplinas from '@forms-admin/disciplina/vincular/vincular-disciplinas-pre-requisito'
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/admin.js/index.js';
+import LayoutAdmin from 'src/components/layout/admin/index.js';
 
 
 export default function PageVincularDisciplinaPrerequisito(){
