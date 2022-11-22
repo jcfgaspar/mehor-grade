@@ -40,6 +40,7 @@ export default function PageLayout(props) {
                 exit="exit"
                 variants={variants}
                 transition={{ type: "linear" }}
+                className="overflow-auto"
               >
                 {props.children}
               </motion.div>
@@ -119,10 +120,12 @@ const RenderMenu = (options) => {
     <div className="flex-shrink-0 p-3 bg-white mw280" key={options.name}>
       <span className="fs-5 fw-semibold">Área do {options.name}</span>
       <hr></hr>
-      <ul className="list-unstyled ps-0">
-        {options.menus.map((opt) => RenderList(opt))}
-      </ul>
-      <DropdownProfile user={options.name} />
+      <div className="d-flex flex-column">
+        <ul className="list-unstyled ps-0 menu_scroll">
+          {options.menus.map((opt) => RenderList(opt))}
+        </ul>
+        <DropdownProfile user={options.name} />
+      </div>
     </div>
   );
 };

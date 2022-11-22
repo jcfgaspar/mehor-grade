@@ -23,17 +23,20 @@ const Pagination = props => {
     }
      
     return (
-        <>
-        { props.skeleton ? <Skeleton height={70} count={10} baseColor="#c7c7c7" highlightColor="#dcdcdc" borderRadius="0.5rem"/> : props.children }
-        <br/>
-        <nav aria-label="Page navigation example">
-            <ul className="pagination justify-content-center" key="teste"> 
-                <li key="first" className={ 1 == current? "page-item disabled" : "page-item" }><a className="page-link" href="#" onClick={_ => props.callBack(current-1)}>Anterior</a></li>
-                <RenderPagination callBack={props.callBack}/>
-                <li key="last" className={ totalPages == current+1 || totalPages == current ? "page-item disabled" : "page-item" }><a className="page-link" href="#" onClick={_ => props.callBack(current+1)}>Próxima</a></li>
-            </ul>
-        </nav>
-        </>
+        <div className="list_div d-flex flex-column bd-highlight" style={{"height": "94vh !important;"}}>
+            <div className="p-2 bd-highlight">
+                { props.skeleton ? <Skeleton height={70} count={10} baseColor="#c7c7c7" highlightColor="#dcdcdc" borderRadius="0.5rem"/> : props.children }
+            </div>
+            <div className="mt-auto p-2 bd-highlight">
+                <nav aria-label="Page navigation example">
+                    <ul className="pagination justify-content-center" key="teste"> 
+                        <li key="first" className={ 1 == current? "page-item disabled" : "page-item" }><a className="page-link" href="#" onClick={_ => props.callBack(current-1)}>Anterior</a></li>
+                        <RenderPagination callBack={props.callBack}/>
+                        <li key="last" className={ totalPages == current+1 || totalPages == current ? "page-item disabled" : "page-item" }><a className="page-link" href="#" onClick={_ => props.callBack(current+1)}>Próxima</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     ) 
 }
 

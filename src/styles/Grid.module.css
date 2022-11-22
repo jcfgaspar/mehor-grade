@@ -24,20 +24,14 @@
 
 
 .list_container {
-    overflow-y: scroll;
-    display: block;
-    width: 100%;
-    padding: 50px 100px 100px 100px;
-    margin: 0 auto;
+    overflow-y: auto;
+    height: 100vh;
+    padding: 50px 100px 0px 100px;
 
 }
 
-
-.list_div  {
-    height: 95vh;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.mb-3 {
+    height: 95vh !important;
 }
 
 .btn{
