@@ -1,5 +1,5 @@
 import CenterDiv from '@grids/Center'
-import LayoutAdmin from 'src/components/layout/discente';
+import LayoutAdmin from 'src/components/layout/discente/index.js';
 
 export default function PageAdminHome(){
     return (

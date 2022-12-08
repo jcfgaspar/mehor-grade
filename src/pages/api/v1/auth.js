@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         return res.status(400).json({message: "Method Not Allowed"})
 
     const response = await auth.getJWT(body)
-    
+
     if(response.status != 200)
         return res.status(401).end()
 

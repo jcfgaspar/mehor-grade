@@ -1,134 +1,131 @@
 import Link from "next/link";
+import { useState } from "react";
 import DropdownProfile from "src/components/dropdown/profile";
+import { MessageContext } from "@helpers/context/message";
+import menuDiscente from "@helpers/menus/discente";
+import { motion,AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
+const variants = {
+  hidden: { opacity: 0, x: -200, y: 0 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: 200, y: 0 },
+};
 
-export default function PageLayout({ children }) {
+export default function PageLayout(props) {
+  const [message, setMessage] = useState("");
+  const router = useRouter();
+  const MessageCallback = (props) => {
+    setMessage(props.info);
+    const toastLiveExample = document.getElementById("liveToast");
+    const toast = new bootstrap.Toast(toastLiveExample);
+    toast.show();
+  };
+
   return (
     <>
-      <div className="d-flex flex-nowrap scroll">
-        <div className="flex-shrink-0 p-3 bg-white mw280">
-          <span className="fs-5 fw-semibold">Área do discente</span>
-          <hr></hr>
-          <ul className="list-unstyled ps-0">
-            <li className="mb-1">
-              <button
-                className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#dashboard-collapse"
-                aria-expanded="false"
-              >
-                Disciplina
-              </button>
-              <div className="collapse" id="dashboard-collapse">
-                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <Link href="/discente/disciplinas/cadastrar">
-                      <a
-                        href="#"
-                        className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
-                      >
-                        Cadastrar
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    {" "}
-                    <Link href="/discente/disciplinas/faltantes">
-                      <a
-                        href=""
-                        className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
-                      >
-                        Faltantes
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    {" "}
-                    <Link href="/discente/disciplinas/historico-cursada">
-                      <a
-                        href=""
-                        className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
-                      >
-                        Histórico cursada
-                      </a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
+      <div className="d-flex flex-nowrap">
+        {RenderMenu(menuDiscente)}
+        <main className="full">
+          <MessageContext.Provider value={MessageCallback}>
+            <AnimatePresence
+              exitBeforeEnter
+              initial={false}
 
-            <li className="mb-1">
-              <button
-                className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#sugestao-collapse"
-                aria-expanded="false"
+            >
+              <motion.div
+                key={router.route}
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                variants={variants}
+                transition={{ type: "linear" }}
+                className="overflow-auto"
               >
-                Sugestão
-              </button>
-              <div className="collapse" id="sugestao-collapse">
-                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <Link href="/discente/sugestao/opcionais">
-                      <a
-                        href="#"
-                        className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
-                      >
-                        Disciplina opcionais
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    {" "}
-                    <Link href="/discente/sugestao/enriquecimento-curricular">
-                      <a
-                        href=""
-                        className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
-                      >
-                        Enriquecimento Curricular
-                      </a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-       
-
-            <li className="mb-1">
-              <button
-                className="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#geracao-collapse"
-                aria-expanded="false"
-              >
-                Geração
-              </button>
-              <div className="collapse" id="geracao-collapse">
-                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <Link href="/discente/geracao/criar-grade">
-                      <a
-                        href="#"
-                        className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
-                      >
-                        Criar grade
-                      </a>
-                    </Link>
-                  </li>
-                
-                </ul>
-              </div>
-            </li>
-          </ul>
-          <DropdownProfile user="Usuário"/>
-        </div>
-
-        <main className="full"> 
-            <div className="scroll">
-            {children}
-            </div>
+                {props.children}
+              </motion.div>
+            </AnimatePresence>
+            <RenderMessage info={message} />
+          </MessageContext.Provider>
         </main>
       </div>
     </>
   );
 }
+
+const RenderMessage = (props) => {
+  return (
+    <div className="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        className="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div className="toast-header">
+          <strong className="me-auto">{props.info.title}</strong>
+          <small>{props.info.time}</small>
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div className="toast-body">{props.info.message}</div>
+      </div>
+    </div>
+  );
+};
+
+const RenderList = (object) => {
+  const class_button =
+    "btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed";
+  return (
+    <li className="mb-1" key={object.name}>
+      <button
+        className={class_button}
+        data-bs-toggle="collapse"
+        data-bs-target={`#${object.name}-collapse`}
+        aria-expanded="false"
+      >
+        {object.name}
+      </button>
+      <div className="collapse" id={`${object.name}-collapse`}>
+        <ul
+          className="btn-toggle-nav list-unstyled fw-normal pb-1 small"
+          key={object.name}
+        >
+          {object.links.map((menu) => (
+            <li key={menu.name}>
+              <Link href={menu.url}>
+                <a
+                  href="#"
+                  className="link-dark d-inline-flex text-decoration-none rounded btn-pretty"
+                >
+                  {menu.name}
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  );
+};
+
+const RenderMenu = (options) => {
+  return (
+    <div className="flex-shrink-0 p-3 bg-white mw280" key={options.name}>
+      <span className="fs-5 fw-semibold">Área do {options.name}</span>
+      <hr></hr>
+      <div className="d-flex flex-column">
+        <ul className="list-unstyled ps-0 menu_scroll">
+          {options.menus.map((opt) => RenderList(opt))}
+        </ul>
+        <DropdownProfile user={options.name} />
+      </div>
+    </div>
+  );
+};
