@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import DropdownProfile from "src/components/dropdown/profile";
 import { MessageContext } from "@helpers/context/message";
-import menuDiscente from "@helpers/menus/discente";
+import menuDiscente from "@helpers/menus/discente/index.js";
 import { motion,AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
