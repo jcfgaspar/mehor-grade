@@ -1,16 +1,22 @@
 import FormDisciplinasCursadas from '@list/historico-disciplinas-cursadas'
-import CenterDiv from '@grids/Center'
 import LayoutDiscente from 'src/components/layout/discente/index.js';
+import ListaGrid from '@grids/Lista'
 
-export default function PageDiscenteDisciplinaCursadas(){
+export default function PageDiscenteDisciplinaFaltantes(){
     return (
-        <CenterDiv>
-            <FormDisciplinasCursadas/>
-        </CenterDiv>
+      <div>
+        <ListaGrid>
+          <p className='list-h1'>Disciplinas Cursadas</p>
+          <FormDisciplinasCursadas/>
+          <br></br>
+          <br></br>
+          <br></br>
+        </ListaGrid>
+      </div>
     );
 }
 
-PageDiscenteDisciplinaCursadas.getLayout = function getLayout(page) {
+PageDiscenteDisciplinaFaltantes.getLayout = function getLayout(page) {
     return (
       <LayoutDiscente>
         { page }

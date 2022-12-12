@@ -1,66 +1,99 @@
-import { useState } from 'react'
-const getGrade = (_) => Math.random() * 30 * 10;
+import { useForm } from "react-hook-form";
+import { routes, headers } from "@helpers/routes";
+import React, { useContext, useState } from "react";
+import ButtonDefault from "@buttons/default";
 
-const ListGroupItem = (props) => {
-  return (
-    <div>
-      <hr/>
-      <a className="list-group-item list-group-item-action">
-        <div className="d-flex w-100 justify-content-between">
-          <h5 className="mb-1">Disciplina</h5>
-          <small className="text-muted">{getGrade().toFixed(0)} horas</small>
-        </div>
-        <p className="mb-1">Descrição da matéria.</p>
-        <small className="text-muted">
-          Disciplina sugerida conforme seu perfil.
-        </small>
-      </a>
-    </div>
-  );
-};
+export default function ListGeraracaoGrade() {
+  const { register, handleSubmit } = useForm();
+  const [carregando, setCarregando] = useState(false);
+  const [disciplinas, setDisciplinas] = useState([])
+  const [error, setError] = useState()
 
-const ListGroup = ({ children }) => {
-  return <div>{children}</div>;
-};
+  const toJson = (response) => response.json();
 
-const SecondView = _ => {
-  return (
-    <ListGroup>
-    <h4>Disciplinas sugeridas</h4>
-    <p>Para enriquecimento curricular</p>
-  {[...Array(3)].map((_, index) => (
-    <ListGroupItem key={index} />
-  ))}
-</ListGroup>
-  )
-}
+  const isNotNull = data => {
+    if(data.length > 0)
+      return data
+    throw "Sentimos muito! Não encontramos horários para o dia informado."
+  }
 
+  const onSubmit = async (data) => {
+    setCarregando(true);
+    setDisciplinas([])
+    setError('')
+    const query = "?" + new URLSearchParams(data).toString()
+    await fetch(routes.internal.v1.recomendacoes.enriquecimento + query, {
+      method: "GET",
+      headers,
+    })
+      .then(toJson)
+      .then(isNotNull)
+      .then(response => {
+        console.log(response)
+        setDisciplinas(response)
+      })
+      .catch(error => {
+        setError("Algo não deu certo: " + error)
+      })
 
-const FirstView = props => {
-  return (
-    <form >
-      <div className="mb-3">
-        <label className="form-label">Dia</label>
-        <input className="form-control" type="text"/>
-      </div>
-      <div className="mb-3">
-          <label className="form-label">Horário</label>
-          <input type="text" className="form-control" />
-      </div>
-      <div className="d-grid gap-2">
-          <button type="button" className="btn btn-outline-primary btn-lg float-end" onClick={_ => props.callback(true)}>Procurar</button>
-      </div>
-    </form>
-  )
-}
-
-export default function ListSugestaoEnriquecimentoCurricular() {
-  const [flag, setFlag] = useState(0)
+    setCarregando(false);
+  };
 
   return (
     <>
-      { flag == 0 && <FirstView callback={setFlag}/> }
-      { flag == 1 && <SecondView/> }
+      <h3>Recomendação de disciplina para enriquecimento curricular</h3>
+      <hr></hr>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-3">
+          <label className="form-label">Dia semana</label>
+          <input
+            className="form-control"
+            type="horas"
+            {...register("dia", { required: true })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Horário</label>
+          <input
+            className="form-control"
+            type="horas"
+            {...register("horario", { required: true })}
+          />
+        </div>
+       
+        <br></br>
+        <ButtonDefault
+          acao={"Pesquisando..."}
+          estatico={"Sugerir"}
+          carregando={carregando}
+        />
+      </form>
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <br></br>
+      { error && <p>{ error } </p> }
+      { carregando && <p>Carregando...</p>}
+
+      { disciplinas.length
+        ? <RenderDisciplina data={disciplinas}/>
+        : null
+      }
     </>
   );
+}
+
+const RenderDisciplina = ({ data }) => {
+  return (
+    <ul className="list-group">
+      { data.map(disciplina => {
+        return (
+          <li className="list-group-item" key={disciplina.nome + disciplina.horario}>
+            { disciplina.nome + " - " + disciplina.turma + " - (" + disciplina.horario + ")" }
+          </li>
+        )
+      })}
+    </ul>
+  )
 }

@@ -12,18 +12,19 @@ const options = {
     {
       "name": "Sugestão",
       "links": [
+        { name: "Disciplina", url: "/discente/sugestao/recomendacao" },
         { name: "Disciplina Opcional", url: "/discente/sugestao/opcionais" },
-        { name: "Enriquecimento Curricular", url: "/discente/sugestao/enriquecimento-curricular" },
-        { name: "pré-requisitos", url: "/discente/sugestao/enriquecimento-curricular" }
+        { name: "Enriquecimento Curricular", url: "/discente/sugestao/enriquecimento-curricular" }
       ]
     },
-    {
-      "name": "Geração",
-      "links": [
-        { name: "Criar grade", url: "/discente/geracao/criar-grade" }
-      ]
-    }
     ]
   }
+
+      // {
+    //   "name": "Geração",
+    //   "links": [
+    //     { name: "Criar grade", url: "/discente/geracao/criar-grade" }
+    //   ]
+    // }
   
   export default options

@@ -1,19 +1,20 @@
-import FormAdicionarCurso from '@forms-discente/cadastrar-disciplinas-cursadas'
+import FormCadastrarDisciplina from '/src/components/forms/discente/cadastrar-disciplinas-cursadas'
 import CenterDiv from '@grids/Center'
-import LayoutDiscente from 'src/components/layout/discente/index.js';
+import LayoutAdmin from 'src/components/layout/discente/index.js';
 
-export default function PageDiscenteCadastrarDisciplina(){
+export default function PageRemoverDisciplinas(){
     return (
         <CenterDiv>
-            <FormAdicionarCurso/>
+            <FormCadastrarDisciplina/>
         </CenterDiv>
     );
 }
 
-PageDiscenteCadastrarDisciplina.getLayout = function getLayout(page) {
+
+PageRemoverDisciplinas.getLayout = function getLayout(page) {
     return (
-      <LayoutDiscente>
-        { page }
-      </LayoutDiscente>
+      <LayoutAdmin>
+        {page}
+      </LayoutAdmin>
     )
   }
