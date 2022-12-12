@@ -22,7 +22,6 @@ export default function ListGeraracaoGrade() {
     setDisciplinas([])
     setError('')
     const query = "?" + new URLSearchParams(data).toString()
-    alert(routes.internal.v1.recomendacoes.opcionais + query)
     await fetch(routes.internal.v1.recomendacoes.opcionais + query, {
       method: "GET",
       headers,
