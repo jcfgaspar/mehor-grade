@@ -17,7 +17,7 @@ const style = {
 
 export default function PageGerarGradeHoraria(){
 return (
-  <div style={{width: "50vw", height: "100vh",  margin: "0 auto", overflow: "hidden"}}>
+  <div style={{width: "36vw", height: "100vh",  margin: "0 auto", overflow: "hidden"}}>
     <div className="row align-items-center" style={{ ...style, width: "900px !important" }}>
       <ListEnriquecimentoCurricular />
     </div>

@@ -18,7 +18,7 @@ const style = {
 
 export default function PageGerarGradeHoraria(){
     return (
-      <div style={{width: "50vw", height: "100vh",  margin: "0 auto", overflow: "hidden"}}>
+      <div style={{width: "43vw", height: "100vh",  margin: "0 auto", overflow: "hidden"}}>
         <div className="row align-items-center" style={{ ...style, width: "900px !important", margin: "0 auto"}}>
           <ListGerarGradeHorario style={{width: "800px !important"}} />
         </div>
