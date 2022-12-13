@@ -47,7 +47,8 @@ export default class Curso{
             const headers = { ...this.headers, ...default_headers }
             const body = JSON.stringify({ codigo })
             const config = { method: 'delete', body , headers }
-            const response = fetch(`${API_URL}${path}/${codigo}`, config)
+            console.log(`${API_URL}${path}/${codigo}`)
+            const response = fetch(`${API_URL}${path}${codigo}`, config)
             return response
         } catch (error) {
             return null
